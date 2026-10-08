@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rutina full body A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF1F4;--card:#FFFFFF;--ink:#16202B;--mute:#5B6775;--line:#D5DBE2;--acc:#2F6FE4;--accbg:#E3ECFC;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121820;--card:#1B232D;--ink:#E6EBF0;--mute:#98A4B1;--line:#2C3642;--acc:#6C9EFF;--accbg:#1F2D45}}
+:root[data-theme="dark"]{--bg:#121820;--card:#1B232D;--ink:#E6EBF0;--mute:#98A4B1;--line:#2C3642;--acc:#6C9EFF;--accbg:#1F2D45}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:24px 16px 48px}
+h1,h2,.reps{font-family:"Barlow Condensed","Arial Narrow",system-ui,sans-serif}
+h1{font-size:40px;line-height:1;margin:0 0 8px;font-weight:700;letter-spacing:-0.5px}
+.intro{color:var(--mute);margin:0 0 8px}
+.plan{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 8px;padding:0;list-style:none}
+.plan li{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:4px 10px;font-size:14px}
+.plan b{font-weight:500}
+section{margin-top:32px}
+h2{font-size:26px;font-weight:700;margin:0;line-height:1.1}
+.sub{color:var(--mute);font-size:14px;margin:2px 0 12px}
+.ex{display:grid;grid-template-columns:128px 1fr;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px 10px 10px;margin-bottom:8px}
+.ex svg{width:100%;height:auto;display:block;background:var(--bg);border-radius:6px}
+.nm{font-weight:500;font-size:17px;margin:0}
+.reps{font-size:30px;font-weight:700;color:var(--acc);line-height:1.05;margin:2px 0}
+.tip{color:var(--mute);font-size:14px;margin:0}
+.simple{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px 14px;margin:0}
+.simple div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.simple div:last-child{border-bottom:0}
+.simple span:last-child{font-weight:500;white-space:nowrap}
+.wt{border:1px dashed var(--acc);color:var(--ink);border-radius:8px;padding:8px 12px;font-size:14px;margin:0 0 10px}
+.rest{background:var(--accbg);color:var(--ink);border-radius:8px;padding:8px 12px;font-size:14px;margin-top:4px}
+.notes{margin-top:32px;font-size:15px}
+.notes p{margin:0 0 8px}
+.s{stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.h{fill:var(--ink)}
+.f{stroke:var(--line);stroke-width:1.5}
+.a{stroke:var(--mute);stroke-width:1.5;fill:none}
+.w{fill:var(--acc)}
+.bench{fill:var(--line)}
+@media (max-width:380px){.ex{grid-template-columns:104px 1fr}.reps{font-size:26px}}
+@media print{body{background:#fff}.ex,.simple{break-inside:avoid}}
+main{zoom:var(--z,1)}
+.zoom{position:fixed;right:12px;bottom:12px;padding-bottom:env(safe-area-inset-bottom,0px);display:flex;gap:6px;z-index:10}
+.zoom button{font:500 18px "Barlow",system-ui,sans-serif;width:48px;height:48px;border-radius:24px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.zoom button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+@media print{.zoom{display:none}}
+.tm{font:500 15px "Barlow",system-ui,sans-serif;font-variant-numeric:tabular-nums;border:0;border-radius:18px;padding:7px 14px;min-width:92px;margin-top:6px;cursor:pointer;color:#fff;background:var(--acc);--p:0%;background-image:linear-gradient(90deg,rgba(0,0,0,.22) var(--p),transparent var(--p))}
+.tm.run{box-shadow:0 0 0 3px var(--accbg)}
+.tm.done{background:#2E8B57}
+.tm:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.simple div{align-items:center}.simple div span:first-child{flex:1}
+.simple .tm{margin:0;min-width:84px}
+.rest{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.rest .tm{margin:0}
+@media print{.tm{display:none}}
+.tw{display:inline-flex;align-items:center;gap:6px;margin-top:6px}
+.tw .tm{margin:0}
+.adj{font:500 18px "Barlow",system-ui,sans-serif;width:34px;height:34px;border-radius:17px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;line-height:1;padding:0}
+.adj:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.simple .tw,.rest .tw{margin:0}
+.reset{font:500 14px "Barlow",system-ui,sans-serif;background:none;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:6px 12px;cursor:pointer;margin-top:4px}
+@media print{.adj,.reset{display:none}}
+.vid{display:inline-block;font-size:14px;font-weight:500;color:var(--acc);text-decoration:none;margin-top:6px}
+.vid:hover{text-decoration:underline}
+.vid:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
+@media print{.vid{display:none}}
+.blk{font:500 15px "Barlow",system-ui,sans-serif;border:1.5px solid var(--acc);color:var(--acc);background:var(--card);border-radius:18px;padding:7px 16px;margin:0 0 12px;cursor:pointer}
+.blk.on{background:var(--acc);color:#fff}
+.blk:focus-visible,.bb:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.bbar{position:fixed;left:12px;right:124px;bottom:12px;margin-bottom:env(safe-area-inset-bottom,0px);display:none;align-items:center;gap:6px;background:var(--ink);color:var(--bg);border-radius:14px;padding:8px 8px 8px 12px;z-index:11;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.bbar.show{display:flex}
+.bi{flex:1;min-width:0}
+.bl{font-size:12px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bt{font:700 26px/1.05 "Barlow Condensed","Arial Narrow",sans-serif;font-variant-numeric:tabular-nums}
+.bn{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bbar.rest .bt{color:#7FD8A4}
+.bb{width:38px;height:38px;border-radius:19px;border:0;background:rgba(255,255,255,.14);color:inherit;font-size:15px;cursor:pointer;flex:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bb{background:rgba(0,0,0,.12)}}
+main{padding-bottom:110px}
+@media print{.blk,.bbar{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"/></marker></defs></svg>
+<main>
+<h1>Rutina full body A</h1>
+<p class="intro">45–50 minutos. Mancuernas, comba y esterilla. 2–3 veces por semana, con un día de descanso entre sesiones.</p>
+<ul class="plan">
+<li><b>7 min</b> calentamiento</li>
+<li><b>12 min</b> circuito 1</li>
+<li><b>12 min</b> circuito 2</li>
+<li><b>10 min</b> core + comba</li>
+<li><b>4 min</b> estiramientos</li>
+</ul>
+
+<section>
+<h2>1. Calentamiento</h2>
+<p class="sub">Seguido, sin descanso.</p>
+<div class="simple">
+<div><span>Comba suave</span><span>2 min</span><button type="button" class="tm" data-t="120"></button></div>
+<div><span>Círculos de brazos</span><span>30 s</span><button type="button" class="tm" data-t="30"></button></div>
+<div><span>Sentadillas lentas sin peso</span><span>1 min</span><button type="button" class="tm" data-t="60"></button></div>
+<div><span>Zancada con giro de torso</span><span>1 min</span><button type="button" class="tm" data-t="60"></button></div>
+<div><span>Gato-camello a cuatro apoyos</span><span>1 min</span><button type="button" class="tm" data-t="60"></button></div>
+<div><span>Comba suave</span><span>1 min 30 s</span><button type="button" class="tm" data-t="90"></button></div>
+</div>
+</section>
+
+<section>
+<h2>2. Circuito 1</h2>
+<p class="sub">3 rondas. Los tres ejercicios seguidos y luego descansa.</p>
+<p class="wt">Peso: una sola mancuerna de 8–10 kg para la sentadilla y el remo. Las flexiones van sin peso.</p>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Sentadilla goblet"><line class="f" x1="10" y1="100" x2="150" y2="100"/><circle class="h" cx="70" cy="36" r="7"/><polyline class="s" points="72,44 62,72 90,74 88,100 98,100"/><polyline class="s" points="70,52 84,57"/><rect class="w" x="82" y="50" width="10" height="13" rx="2"/><line class="a" x1="128" y1="40" x2="128" y2="88" marker-start="url(#m)" marker-end="url(#m)"/></svg>
+<div><p class="nm">Sentadilla goblet</p><p class="reps">12 reps</p><p class="tip">Pesa al pecho, cadera atrás, espalda recta. 8–10 kg.</p><a class="vid" href="https://www.youtube.com/results?search_query=goblet+squat+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Flexiones"><line class="f" x1="10" y1="100" x2="150" y2="100"/><circle class="h" cx="32" cy="57" r="7"/><line class="s" x1="40" y1="62" x2="138" y2="98"/><line class="s" x1="45" y1="64" x2="45" y2="100"/><line class="a" x1="72" y1="24" x2="72" y2="58" marker-start="url(#m)" marker-end="url(#m)"/></svg>
+<div><p class="nm">Flexiones</p><p class="reps">8–10 reps</p><p class="tip">Cuerpo como una tabla. Rodillas al suelo si hace falta.</p><a class="vid" href="https://www.youtube.com/results?search_query=push+up+proper+form+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Remo con mancuerna a una mano"><line class="f" x1="10" y1="100" x2="150" y2="100"/><rect class="bench" x="18" y="72" width="54" height="6" rx="2"/><line class="f" x1="24" y1="78" x2="24" y2="100"/><line class="f" x1="66" y1="78" x2="66" y2="100"/><circle class="h" cx="46" cy="50" r="7"/><line class="s" x1="54" y1="54" x2="110" y2="60"/><line class="s" x1="58" y1="55" x2="50" y2="72"/><polyline class="s" points="110,60 104,100"/><polyline class="s" points="110,60 122,100"/><polyline class="s" points="68,56 80,42 80,62"/><rect class="w" x="74" y="62" width="12" height="8" rx="2"/><line class="a" x1="96" y1="44" x2="96" y2="80" marker-start="url(#m)" marker-end="url(#m)"/></svg>
+<div><p class="nm">Remo a una mano</p><p class="reps">10 por brazo</p><p class="tip">Tira hacia la cadera, codo pegado al cuerpo.</p><a class="vid" href="https://www.youtube.com/results?search_query=one+arm+dumbbell+row+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+
+<p class="rest"><span>Descanso entre rondas: 90 s</span><button type="button" class="tm" data-t="90"></button></p>
+</section>
+
+<section>
+<h2>3. Circuito 2</h2>
+<p class="sub">3 rondas. Igual que el circuito 1.</p>
+<p class="wt">Peso: dos mancuernas de 4–6 kg cada una para los tres ejercicios.</p>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Zancada hacia atrás"><line class="f" x1="10" y1="100" x2="150" y2="100"/><circle class="h" cx="84" cy="20" r="7"/><line class="s" x1="84" y1="28" x2="84" y2="58"/><polyline class="s" points="84,58 102,76 102,100"/><polyline class="s" points="84,58 74,94 48,98"/><line class="s" x1="84" y1="34" x2="78" y2="56"/><rect class="w" x="73" y="56" width="10" height="10" rx="2"/><line class="a" x1="62" y1="36" x2="28" y2="36" marker-end="url(#m)"/></svg>
+<div><p class="nm">Zancada atrás</p><p class="reps">8 por pierna</p><p class="tip">Paso atrás, rodilla trasera casi al suelo. Sin peso o 4–6 kg.</p><a class="vid" href="https://www.youtube.com/results?search_query=dumbbell+reverse+lunge+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Press de hombro"><line class="f" x1="10" y1="100" x2="150" y2="100"/><circle class="h" cx="80" cy="34" r="7"/><line class="s" x1="80" y1="42" x2="80" y2="70"/><polyline class="s" points="80,70 72,100"/><polyline class="s" points="80,70 88,100"/><polyline class="s" points="80,46 66,34 68,14"/><polyline class="s" points="80,46 94,34 92,14"/><rect class="w" x="61" y="8" width="14" height="7" rx="2"/><rect class="w" x="85" y="8" width="14" height="7" rx="2"/><line class="a" x1="124" y1="62" x2="124" y2="20" marker-end="url(#m)"/></svg>
+<div><p class="nm">Press de hombro</p><p class="reps">10 reps</p><p class="tip">Empuja arriba sin arquear la zona lumbar. 3–6 kg por mano.</p><a class="vid" href="https://www.youtube.com/results?search_query=dumbbell+shoulder+press+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Peso muerto rumano"><line class="f" x1="10" y1="100" x2="150" y2="100"/><circle class="h" cx="46" cy="66" r="7"/><line class="s" x1="54" y1="66" x2="96" y2="54"/><polyline class="s" points="96,54 92,100"/><polyline class="s" points="96,54 100,100"/><line class="s" x1="60" y1="65" x2="62" y2="88"/><rect class="w" x="56" y="88" width="12" height="8" rx="2"/><path class="a" d="M58 42 Q80 26 102 36" marker-end="url(#m)"/></svg>
+<div><p class="nm">Peso muerto rumano</p><p class="reps">12 reps</p><p class="tip">Cadera atrás, rodillas casi rectas, espalda plana.</p><a class="vid" href="https://www.youtube.com/results?search_query=dumbbell+romanian+deadlift+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+
+<p class="rest"><span>Descanso entre rondas: 90 s</span><button type="button" class="tm" data-t="90"></button></p>
+</section>
+
+<section>
+<h2>4. Core + comba</h2>
+<p class="sub">40 s de trabajo, 20 s de descanso. Haz la serie de 5 entera, 2–3 veces.</p>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Plancha"><line class="f" x1="10" y1="100" x2="150" y2="100"/><circle class="h" cx="34" cy="72" r="7"/><line class="s" x1="42" y1="78" x2="140" y2="98"/><polyline class="s" points="44,79 44,99 64,99"/></svg>
+<div><p class="nm">Plancha</p><p class="reps">40 s</p><button type="button" class="tm" data-t="40"></button><p class="tip">Aprieta abdomen y glúteo. No dejes caer la cadera.</p><a class="vid" href="https://www.youtube.com/results?search_query=forearm+plank+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Comba"><line class="f" x1="10" y1="100" x2="150" y2="100"/><path d="M60 62 Q34 110 80 104 Q126 110 100 62" fill="none" stroke="var(--acc)" stroke-width="2"/><circle class="h" cx="80" cy="20" r="7"/><line class="s" x1="80" y1="28" x2="80" y2="62"/><polyline class="s" points="80,62 76,92"/><polyline class="s" points="80,62 84,92"/><polyline class="s" points="80,36 68,54 60,62"/><polyline class="s" points="80,36 92,54 100,62"/></svg>
+<div><p class="nm">Comba</p><p class="reps">40 s</p><button type="button" class="tm" data-t="40"></button><p class="tip">Saltos pequeños, de puntillas. Giran las muñecas, no los brazos.</p><a class="vid" href="https://www.youtube.com/results?search_query=jump+rope+basic+bounce+beginners+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Dead bug"><line class="f" x1="10" y1="100" x2="150" y2="100"/><circle class="h" cx="38" cy="90" r="7"/><line class="s" x1="46" y1="92" x2="98" y2="92"/><line class="s" x1="54" y1="92" x2="54" y2="56"/><line class="s" x1="50" y1="94" x2="16" y2="96"/><polyline class="s" points="98,92 98,64 124,64"/><line class="s" x1="98" y1="94" x2="146" y2="88"/></svg>
+<div><p class="nm">Dead bug</p><p class="reps">40 s</p><button type="button" class="tm" data-t="40"></button><p class="tip">Lumbar pegada al suelo. Estira brazo y pierna contrarios, alternando.</p><a class="vid" href="https://www.youtube.com/results?search_query=dead+bug+exercise+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Comba"><line class="f" x1="10" y1="100" x2="150" y2="100"/><path d="M60 62 Q34 110 80 104 Q126 110 100 62" fill="none" stroke="var(--acc)" stroke-width="2"/><circle class="h" cx="80" cy="20" r="7"/><line class="s" x1="80" y1="28" x2="80" y2="62"/><polyline class="s" points="80,62 76,92"/><polyline class="s" points="80,62 84,92"/><polyline class="s" points="80,36 68,54 60,62"/><polyline class="s" points="80,36 92,54 100,62"/></svg>
+<div><p class="nm">Comba</p><p class="reps">40 s</p><button type="button" class="tm" data-t="40"></button><p class="tip">Si te cuesta, alterna pies como si corrieras.</p><a class="vid" href="https://www.youtube.com/results?search_query=jump+rope+basic+bounce+beginners+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+
+<div class="ex"><svg viewBox="0 0 160 110" role="img" aria-label="Puente de glúteo"><line class="f" x1="10" y1="100" x2="150" y2="100"/><circle class="h" cx="28" cy="92" r="7"/><line class="s" x1="36" y1="94" x2="86" y2="66"/><polyline class="s" points="86,66 112,62 118,100"/><rect class="w" x="80" y="54" width="12" height="9" rx="2"/><line class="a" x1="86" y1="48" x2="86" y2="20" marker-end="url(#m)"/></svg>
+<div><p class="nm">Puente de glúteo</p><p class="reps">40 s</p><button type="button" class="tm" data-t="40"></button><p class="tip">Sube la cadera apretando glúteo, 1 s arriba. Mancuerna opcional.</p><a class="vid" href="https://www.youtube.com/results?search_query=dumbbell+glute+bridge+tutorial" target="_blank" rel="noopener">▶ Ver vídeo</a></div></div>
+</section>
+
+<section>
+<h2>5. Estiramientos</h2>
+<p class="sub">Unos 30–40 s cada uno, respirando despacio.</p>
+<div class="simple">
+<div><span>Cuádriceps (de pie, talón al glúteo)</span><span>30 s por lado</span><button type="button" class="tm" data-t="30"></button></div>
+<div><span>Isquios (pierna estirada, inclínate)</span><span>30 s por lado</span><button type="button" class="tm" data-t="30"></button></div>
+<div><span>Pecho (brazo en el marco de la puerta)</span><span>30 s por lado</span><button type="button" class="tm" data-t="30"></button></div>
+<div><span>Espalda: postura del niño</span><span>40 s</span><button type="button" class="tm" data-t="40"></button></div>
+</div>
+</section>
+
+<div class="notes">
+<h2>Para progresar</h2>
+<p>Las dos primeras semanas usa pesos con los que te sobren 2–3 repeticiones. Primero la técnica.</p>
+<p>Cuando todo te salga cómodo, baja el descanso a 60 s o añade una cuarta ronda al circuito 1.</p>
+<p>Si llegas al tope de repeticiones dos sesiones seguidas, sube 1–2 kg.</p>
+</div>
+<p><button type="button" class="reset" id="rst">Restablecer los tiempos originales</button></p>
+</main>
+<div class="zoom" role="group" aria-label="Tamaño del texto"><button type="button" id="zm" aria-label="Reducir tamaño">A−</button><button type="button" id="zp" aria-label="Aumentar tamaño">A+</button></div>
+<script>
+(function(){var z=1,k='rutina-zoom';try{var v=parseFloat(localStorage.getItem(k));if(v>=0.8&&v<=2)z=v}catch(e){}
+function set(n){z=Math.min(2,Math.max(0.8,Math.round(n*10)/10));document.documentElement.style.setProperty('--z',z);try{localStorage.setItem(k,z)}catch(e){}}
+set(z);document.getElementById('zp').onclick=function(){set(z+0.1)};document.getElementById('zm').onclick=function(){set(z-0.1)};})();
+</script>
+<script>
+(function(){
+var cur=null,ac=null,lock=null;
+function f(n){n=Math.max(0,Math.ceil(n));return Math.floor(n/60)+':'+String(n%60).padStart(2,'0')}
+function beep(freq,dur){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();var o=ac.createOscillator(),g=ac.createGain();o.frequency.value=freq;o.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(0.25,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+dur);o.start();o.stop(ac.currentTime+dur)}catch(e){}}
+function vib(p){try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}}
+function wake(on){try{if(on&&navigator.wakeLock&&!lock){navigator.wakeLock.request('screen').then(function(l){lock=l}).catch(function(){})}else if(!on&&lock){lock.release();lock=null}}catch(e){}}
+function draw(b){var st=b._s;if(st.state==='done'){b.textContent='✓ Hecho';b.style.setProperty('--p','0%');return}
+var lbl=f(st.left);if(st.split&&st.state!=='idle')lbl+=(st.left>st.t-st.split?' · lado 1':' · lado 2');
+b.textContent=(st.state==='run'?'❚❚ ':'▶ ')+lbl;b.style.setProperty('--p',(100*(1-st.left/st.t))+'%');
+b.setAttribute('aria-label',(st.state==='run'?'Pausar, quedan ':'Iniciar temporizador de ')+f(st.left))}
+function stop(b){var st=b._s;clearInterval(st.iv);st.iv=null;if(st.state==='run')st.state='pause';b.classList.remove('run');draw(b)}
+function tick(b){var st=b._s,now=Date.now(),left=st.t-(now-st.start)/1000;
+var prev=Math.ceil(st.left),nowc=Math.ceil(left);st.left=left;
+if(nowc!==prev){if(nowc<=3&&nowc>0)beep(660,0.12);if(st.split&&nowc===st.t-st.split){beep(880,0.4);vib(200)}}
+if(left<=0){clearInterval(st.iv);st.iv=null;st.state='done';b.classList.remove('run');b.classList.add('done');beep(990,0.6);vib([200,100,200]);cur=null;wake(false);b.dispatchEvent(new CustomEvent('tmdone',{bubbles:true}))}
+draw(b)}
+function start(b){var st=b._s;if(cur&&cur!==b)stop(cur);cur=b;if(st.state==='done'||st.state==='idle'){st.left=st.t}
+st.start=Date.now()-(st.t-st.left)*1000;st.state='run';b.classList.remove('done');b.classList.add('run');wake(true);st.iv=setInterval(function(){tick(b)},200);draw(b)}
+window.tmDraw=draw;window.tmBeep=beep;document.querySelectorAll('.tm').forEach(function(b){var t=+b.dataset.t;b._s={t:t,left:t,split:+b.dataset.split||0,state:'idle',iv:null};draw(b);
+b.addEventListener('click',function(){var st=b._s;if(st.state==='run'){stop(b);cur=null;wake(false)}else start(b)})});
+})();
+</script>
+<script>
+(function(){
+var K='rutina-t:'+location.pathname+':';
+function lab(n){var m=Math.floor(n/60),r=n%60;return m?(m+' min'+(r?' '+r+' s':'')):(r+' s')}
+var re=/\d+ min(?: \d+ s)?|\d+ s/;
+var all=[].slice.call(document.querySelectorAll('.tm'));
+function upd(b){var st=b._s,l=b._lbl;if(l){l.textContent=l.textContent.replace(re,lab(st.split?st.split:st.t))}window.tmDraw(b)}
+function setT(b,n,save){var st=b._s,step=st.split?10:5;n=Math.max(step,Math.min(600,n));var d=n-st.t;
+if(st.split)st.split=n/2;st.t=n;
+if(st.state==='run'){st.start+=d*1000;st.left+=d}else{st.state=st.state==='done'?'idle':st.state;b.classList.remove('done');if(st.state==='idle')st.left=n;else st.left=Math.min(n,st.left+d)}
+if(save){try{localStorage.setItem(K+b._i,n)}catch(e){}}upd(b)}
+all.forEach(function(b,i){b._i=i;b._t0=b._s.t;
+var p=b.previousElementSibling;if(p&&re.test(p.textContent))b._lbl=p;
+var w=document.createElement('span');w.className='tw';b.parentNode.insertBefore(w,b);
+var mi=document.createElement('button'),pl=document.createElement('button');
+mi.type=pl.type='button';mi.className=pl.className='adj';mi.textContent='−';pl.textContent='+';
+mi.setAttribute('aria-label','Quitar tiempo');pl.setAttribute('aria-label','Añadir tiempo');
+w.appendChild(mi);w.appendChild(b);w.appendChild(pl);
+mi.onclick=function(){setT(b,b._s.t-(b._s.split?10:5),true)};
+pl.onclick=function(){setT(b,b._s.t+(b._s.split?10:5),true)};
+try{var v=parseInt(localStorage.getItem(K+i),10);if(v>0&&v!==b._s.t)setT(b,v,false)}catch(e){}
+});
+document.getElementById('rst').onclick=function(){all.forEach(function(b){try{localStorage.removeItem(K+b._i)}catch(e){}setT(b,b._t0,false)})};
+})();
+</script>
+<script>
+(function(){
+var run=null,bar,ui;
+function fmt(n){n=Math.max(0,Math.ceil(n));return Math.floor(n/60)+':'+String(n%60).padStart(2,'0')}
+function nameOf(b){var ex=b.closest('.ex');if(ex)return ex.querySelector('.nm').textContent;var r=b.closest('.simple div');return r?r.querySelector('span').textContent.replace('▶ vídeo','').trim():''}
+function perSide(b){return !b._s.split&&b._lbl&&/por lado/.test(b._lbl.textContent)}
+bar=document.createElement('div');bar.className='bbar';bar.setAttribute('role','status');
+bar.innerHTML='<div class="bi"><div class="bl"></div><div class="bt"></div><div class="bn"></div></div><button type="button" class="bb" data-a="p" aria-label="Pausar o seguir">❚❚</button><button type="button" class="bb" data-a="s" aria-label="Saltar al siguiente">⏭</button><button type="button" class="bb" data-a="x" aria-label="Parar el bloque">■</button>';
+document.body.appendChild(bar);
+var el={l:bar.querySelector('.bl'),t:bar.querySelector('.bt'),n:bar.querySelector('.bn'),p:bar.querySelector('[data-a=p]')};
+bar.addEventListener('click',function(e){var a=e.target.closest('.bb');if(!a||!run)return;a=a.dataset.a;if(a==='p')pause();else if(a==='s')skip();else stopAll()});
+function step(){return run.steps[run.i]}
+function paint(){if(!run)return;var st=step(),R=run.rounds,lab=(R>1?'Vuelta '+st.round+'/'+R+' · ':'')+(run.i+1)+'/'+run.steps.length;
+if(run.phase==='work'){var b=st.b;bar.classList.remove('rest');el.l.textContent=lab;el.t.textContent=fmt(b._s.left);el.n.textContent=nameOf(b)+(st.side===2?' · lado 2':st.side===1?' · lado 1':'');el.p.textContent=b._s.state==='run'?'❚❚':'▶'}
+else{bar.classList.add('rest');el.l.textContent=lab+' · '+run.rest.label;el.t.textContent=fmt(run.rest.left);el.n.textContent='Siguiente: '+nameOf(st.b)+(st.side===2?' · lado 2':'');el.p.textContent=run.rest.paused?'▶':'❚❚'}}
+function work(){var b=step().b;run.phase='work';if(b._s.state!=='run'){b._s.state='idle';b.classList.remove('done')}
+try{b.closest('.ex,.simple div').scrollIntoView({behavior:'smooth',block:'center'})}catch(e){}
+b.click();paint()}
+function rest(sec,label){run.phase='rest';var r=run.rest={t:sec,left:sec,start:Date.now(),paused:false,label:label};
+if(sec<=0){work();return}
+try{step().b.closest('.ex,.simple div').scrollIntoView({behavior:'smooth',block:'center'})}catch(e){}
+clearInterval(run.riv);run.riv=setInterval(function(){if(!run||run.phase!=='rest'||r.paused)return;var prev=Math.ceil(r.left);r.left=r.t-(Date.now()-r.start)/1000;var c=Math.ceil(r.left);if(c!==prev&&c<=3&&c>0)window.tmBeep(660,0.12);if(r.left<=0){clearInterval(run.riv);work()}paint()},200);paint()}
+function next(){if(!run)return;var prev=step();run.i++;if(run.i>=run.steps.length){finish();return}
+var st=step();if(st.side===2&&st.b===prev.b)rest(5,'Cambia de lado');else rest(run.restSec,run.restSec>=10?'Descanso':'Prepárate')}
+function finish(){var sec=run.sec;stopAll();window.tmBeep(990,0.3);setTimeout(function(){window.tmBeep(1320,0.5)},350);try{navigator.vibrate&&navigator.vibrate([300,100,300])}catch(e){}
+var bt=sec.querySelector('.blk');bt.textContent='✓ Bloque terminado';setTimeout(function(){bt.textContent='▶ Bloque seguido'},4000)}
+function pause(){if(run.phase==='work'){step().b.click()}else{var r=run.rest;if(r.paused){r.start=Date.now()-(r.t-r.left)*1000;r.paused=false}else r.paused=true}paint()}
+function skip(){if(run.phase==='work'){var b=step().b;if(b._s.state==='run')b.click();b._s.state='idle';b._s.left=b._s.t;b.classList.remove('done');window.tmDraw(b);next()}else{clearInterval(run.riv);work()}}
+function stopAll(){if(!run)return;clearInterval(run.riv);clearInterval(run.piv);var cs=run.steps[run.i];if(cs&&run.phase==='work'&&cs.b._s.state==='run')cs.b.click();
+var bt=run.sec.querySelector('.blk');bt.classList.remove('on');bt.textContent='▶ Bloque seguido';run=null;bar.classList.remove('show')}
+document.addEventListener('tmdone',function(e){if(run&&run.phase==='work'&&e.target===step().b)setTimeout(next,600)});
+document.querySelectorAll('section').forEach(function(sec){var tms=[].slice.call(sec.querySelectorAll('.tm'));if(tms.length<2)return;
+var sub=sec.querySelector('.sub'),txt=sub?sub.textContent:'',m=txt.match(/(\d+)(?:–\d+)? veces/),rounds=m?+m[1]:1,rm=txt.match(/(\d+) s de descanso/),restSec=rm?+rm[1]:5;
+var bt=document.createElement('button');bt.type='button';bt.className='blk';bt.textContent='▶ Bloque seguido';(sub||sec.firstElementChild).after(bt);
+bt.addEventListener('click',function(){if(run&&run.sec===sec){stopAll();return}stopAll();
+var steps=[];for(var r=1;r<=rounds;r++)tms.forEach(function(b){if(perSide(b)){steps.push({b:b,round:r,side:1});steps.push({b:b,round:r,side:2})}else steps.push({b:b,round:r,side:0})});
+run={sec:sec,steps:steps,i:0,rounds:rounds,restSec:restSec,phase:'work'};bt.classList.add('on');bt.textContent='■ Parar bloque';bar.classList.add('show');
+run.piv=setInterval(paint,250);work()})});
+})();
+</script>
+</body>
+</html>
