@@ -81,6 +81,12 @@ main{zoom:var(--z,1)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bb{background:rgba(0,0,0,.12)}}
 main{padding-bottom:110px}
 @media print{.blk,.bbar{display:none}}
+.rnd{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:14px;margin:6px 0 0}
+.rnd.last{border-color:var(--acc)}
+.rnd .rc{display:inline-flex;align-items:center;gap:8px}
+.rnd b{font:700 24px/1 "Barlow Condensed","Arial Narrow",sans-serif;color:var(--acc);font-variant-numeric:tabular-nums;min-width:56px;text-align:center}
+.rnd b small{font-size:15px;color:var(--mute);font-weight:500}
+@media print{.rnd{display:none}}
 </style>
 </head>
 <body>
@@ -300,6 +306,27 @@ bt.addEventListener('click',function(){if(run&&run.sec===sec){stopAll();return}s
 var steps=[];for(var r=1;r<=rounds;r++)tms.forEach(function(b){if(perSide(b)){steps.push({b:b,round:r,side:1});steps.push({b:b,round:r,side:2})}else steps.push({b:b,round:r,side:0})});
 run={sec:sec,steps:steps,i:0,rounds:rounds,restSec:restSec,phase:'work'};bt.classList.add('on');bt.textContent='■ Parar bloque';bar.classList.add('show');
 run.piv=setInterval(paint,250);work()})});
+})();
+</script>
+<script>
+(function(){
+var K='rutina-r:'+location.pathname,TTL=3*3600*1000,list=[],saved=null;
+try{var o=JSON.parse(localStorage.getItem(K));if(o&&o.v&&Date.now()-o.t<TTL)saved=o.v}catch(e){}
+function save(){try{localStorage.setItem(K,JSON.stringify({t:Date.now(),v:list.map(function(c){return c.r})}))}catch(e){}}
+[].slice.call(document.querySelectorAll('section')).forEach(function(sec){
+var rest=sec.querySelector('.rest'),tm=rest&&rest.querySelector('.tm'),sub=sec.querySelector('.sub'),m=sub&&/(\d+)\s+rondas/.exec(sub.textContent);
+if(!tm||!m)return;
+var c={n:parseInt(m[1],10),r:1},i=list.length;list.push(c);
+if(saved&&saved[i]>=1&&saved[i]<=c.n)c.r=saved[i];
+var el=document.createElement('p');el.className='rnd';
+el.innerHTML='<span class="rl"></span><span class="rc"><button type="button" class="adj" aria-label="Ronda anterior">\u2212</button><b aria-live="polite"></b><button type="button" class="adj" aria-label="Ronda siguiente">+</button></span>';
+var lb=el.querySelector('.rl'),b=el.querySelector('b'),bt=el.querySelectorAll('.adj');
+function set(v){c.r=Math.max(1,Math.min(c.n,v));var last=c.r===c.n;b.innerHTML=c.r+' <small>/ '+c.n+'</small>';lb.textContent=last?'\u00daltima ronda':'Ronda';el.classList.toggle('last',last);save()}
+bt[0].onclick=function(){set(c.r-1)};bt[1].onclick=function(){set(c.r+1)};
+tm.addEventListener('tmdone',function(){set(c.r+1)});
+rest.parentNode.insertBefore(el,rest.nextSibling);
+set(c.r);
+});
 })();
 </script>
 </body>

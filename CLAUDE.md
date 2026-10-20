@@ -35,8 +35,9 @@ Este archivo resume una conversación previa con Claude (claude.ai) donde se dis
 
 | Archivo | Contenido |
 |---|---|
-| `index.html` | Página de inicio: enlaces a las cinco rutinas y rotación semanal. |
-| `rutina_push.html` | Push: pecho, hombro, tríceps + cuádriceps. 3 circuitos (60 s), core + comba. |
+| `index.html` | Página de inicio: enlaces a las seis rutinas y rotación semanal (Push A/B alternando). |
+| `rutina_push.html` | Push A: pecho, hombro, tríceps + cuádriceps. 3 circuitos (60 s), core + comba. |
+| `rutina_push_B.html` | Push B (octubre 2026, el usuario notó demasiado hombro y poco tríceps en la A): sin press de hombro ni elevaciones laterales. C1 press en el suelo codos pegados + sentadilla con mancuernas a los lados (8–10 kg); C2 aperturas en el suelo, extensión de tríceps tumbado, patada de tríceps (4–6 kg); C3 flexiones diamante, fondos en silla, extensión de tríceps en la silla; core: comba, plancha lateral, comba, elevación de piernas. Se alterna con la A de una semana a otra. |
 | `rutina_pull.html` | Pull: espalda, bíceps + glúteo/isquios. Circuito 1 de barra (90 s) con tabla de progresión, 2 circuitos de mancuernas (60 s), core + comba. |
 | `rutina_A.html` | Full body A: piernas + empuje. 2 circuitos (90 s de descanso), core + comba. |
 | `rutina_B.html` | Full body B: 3 circuitos (60 s), con brazos (curl, tríceps). Circuito 3 con gomas y silla. |
@@ -59,6 +60,9 @@ Cada HTML es **un único archivo autocontenido** (CSS y JS inline, SVG inline). 
 - **Modo continuo**: botón "▶ Bloque seguido" en cada sección con 2+ cronómetros. Encadena ejercicios, descansos
   (leídos del texto `.sub`: "N s de descanso"; si no, 5 s "Prepárate"), vueltas ("N veces") y lados ("por lado").
   Barra inferior fija con tiempo, ejercicio actual/siguiente, pausa, saltar y parar.
+- **Contador de rondas** (`.rnd`, creado por JS tras cada `.rest` cuyo `.sub` dice "N rondas"): "Ronda r / N" con botones −/+.
+  Sube solo cuando acaba el cronómetro del descanso (evento `tmdone`), topa en N ("Última ronda", borde de acento).
+  Se guarda en localStorage `rutina-r:<pathname>` con marca de tiempo y caduca a las 3 h (para que la sesión siguiente empiece en 1).
 - **Vídeos**: enlace "▶ Ver vídeo" por ejercicio = búsqueda de YouTube con el nombre en inglés + "tutorial"
   (no enlazar vídeos concretos, pueden desaparecer).
 
