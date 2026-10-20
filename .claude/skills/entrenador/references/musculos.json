@@ -1,0 +1,268 @@
+{
+ "_doc": "Ejercicio (texto exacto de .nm en los HTML, o de la fila del calentamiento) -> músculos. 1 = motor principal, 0.5 = secundario. Músculos: pecho, hombro_ant, hombro_lat, hombro_post, triceps, biceps, dorsal, espalda_alta, lumbar, cuadriceps, gluteo, isquios, gemelos, aductores, antebrazo, core, oblicuos, cardio",
+ "Press en el suelo": {
+  "pecho": 1,
+  "triceps": 0.5,
+  "hombro_ant": 0.5
+ },
+ "Press en el suelo con codos pegados": {
+  "pecho": 1,
+  "triceps": 1
+ },
+ "Sentadilla frontal con mancuernas": {
+  "cuadriceps": 1,
+  "gluteo": 0.5,
+  "core": 0.5
+ },
+ "Sentadilla con mancuernas a los lados": {
+  "cuadriceps": 1,
+  "gluteo": 0.5,
+  "antebrazo": 0.5
+ },
+ "Sentadilla goblet": {
+  "cuadriceps": 1,
+  "gluteo": 0.5,
+  "core": 0.5
+ },
+ "Thruster goblet": {
+  "cuadriceps": 1,
+  "hombro_ant": 1,
+  "gluteo": 0.5,
+  "triceps": 0.5
+ },
+ "Press de hombro de pie": {
+  "hombro_ant": 1,
+  "hombro_lat": 0.5,
+  "triceps": 0.5
+ },
+ "Press de hombro": {
+  "hombro_ant": 1,
+  "hombro_lat": 0.5,
+  "triceps": 0.5
+ },
+ "Press Arnold": {
+  "hombro_ant": 1,
+  "hombro_lat": 0.5,
+  "triceps": 0.5
+ },
+ "Elevaciones laterales": {
+  "hombro_lat": 1
+ },
+ "Extensión de tríceps tumbado": {
+  "triceps": 1
+ },
+ "Extensión de tríceps": {
+  "triceps": 1
+ },
+ "Patada de tríceps": {
+  "triceps": 1
+ },
+ "Flexiones con los pies en la silla": {
+  "pecho": 1,
+  "hombro_ant": 0.5,
+  "triceps": 0.5,
+  "core": 0.5
+ },
+ "Flexiones": {
+  "pecho": 1,
+  "triceps": 0.5,
+  "hombro_ant": 0.5,
+  "core": 0.5
+ },
+ "Flexiones diamante": {
+  "triceps": 1,
+  "pecho": 1
+ },
+ "Fondos en silla": {
+  "triceps": 1,
+  "pecho": 0.5,
+  "hombro_ant": 0.5
+ },
+ "Extensión de tríceps en la silla": {
+  "triceps": 1
+ },
+ "Flexión pica": {
+  "hombro_ant": 1,
+  "hombro_lat": 0.5,
+  "triceps": 0.5
+ },
+ "Aperturas en el suelo": {
+  "pecho": 1
+ },
+ "Dominada agarre ancho: negativas": {
+  "dorsal": 1,
+  "biceps": 0.5,
+  "espalda_alta": 0.5,
+  "antebrazo": 0.5
+ },
+ "Dominada agarre neutro: asistidas": {
+  "dorsal": 1,
+  "biceps": 0.5,
+  "espalda_alta": 0.5,
+  "antebrazo": 0.5
+ },
+ "Elevación de rodillas colgado": {
+  "core": 1,
+  "antebrazo": 0.5
+ },
+ "Remo inclinado con mancuernas": {
+  "dorsal": 1,
+  "espalda_alta": 1,
+  "biceps": 0.5,
+  "hombro_post": 0.5,
+  "lumbar": 0.5
+ },
+ "Remo inclinado": {
+  "dorsal": 1,
+  "espalda_alta": 1,
+  "biceps": 0.5,
+  "hombro_post": 0.5,
+  "lumbar": 0.5
+ },
+ "Remo a una mano": {
+  "dorsal": 1,
+  "espalda_alta": 0.5,
+  "biceps": 0.5,
+  "hombro_post": 0.5
+ },
+ "Remo en plancha, mano en el suelo": {
+  "dorsal": 1,
+  "core": 0.5,
+  "biceps": 0.5,
+  "hombro_post": 0.5
+ },
+ "Pullover en el suelo": {
+  "dorsal": 1,
+  "pecho": 0.5,
+  "triceps": 0.5
+ },
+ "Peso muerto rumano": {
+  "isquios": 1,
+  "gluteo": 1,
+  "lumbar": 0.5,
+  "antebrazo": 0.5
+ },
+ "Peso muerto a una pierna": {
+  "isquios": 1,
+  "gluteo": 1,
+  "lumbar": 0.5,
+  "core": 0.5
+ },
+ "Curl de bíceps": {
+  "biceps": 1,
+  "antebrazo": 0.5
+ },
+ "Curl martillo con goma": {
+  "biceps": 1,
+  "antebrazo": 1
+ },
+ "Puente de glúteo a una pierna": {
+  "gluteo": 1,
+  "isquios": 0.5
+ },
+ "Puente de glúteo": {
+  "gluteo": 1,
+  "isquios": 0.5
+ },
+ "Sentadilla búlgara": {
+  "cuadriceps": 1,
+  "gluteo": 1,
+  "core": 0.5
+ },
+ "Zancada atrás": {
+  "cuadriceps": 1,
+  "gluteo": 1
+ },
+ "Zancada lateral": {
+  "aductores": 1,
+  "cuadriceps": 1,
+  "gluteo": 0.5
+ },
+ "Swing con mancuerna": {
+  "gluteo": 1,
+  "isquios": 1,
+  "lumbar": 0.5,
+  "cardio": 0.5
+ },
+ "Pájaro con mancuernas": {
+  "hombro_post": 1,
+  "espalda_alta": 0.5
+ },
+ "Leñador con mancuerna": {
+  "oblicuos": 1,
+  "core": 0.5,
+  "hombro_ant": 0.5
+ },
+ "Marcha con mancuerna a un lado": {
+  "oblicuos": 1,
+  "core": 0.5,
+  "antebrazo": 1
+ },
+ "Dead bug con mancuerna": {
+  "core": 1
+ },
+ "Dead bug": {
+  "core": 1
+ },
+ "Plancha con arrastre": {
+  "core": 1,
+  "oblicuos": 0.5,
+  "hombro_ant": 0.5
+ },
+ "Plancha con toque de hombro": {
+  "core": 1,
+  "oblicuos": 0.5,
+  "hombro_ant": 0.5
+ },
+ "Plancha": {
+  "core": 1
+ },
+ "Plancha lateral": {
+  "oblicuos": 1,
+  "core": 0.5
+ },
+ "Hollow hold": {
+  "core": 1
+ },
+ "Elevación de piernas tumbado": {
+  "core": 1
+ },
+ "Bicicleta": {
+  "core": 1,
+  "oblicuos": 0.5
+ },
+ "Superman": {
+  "lumbar": 1,
+  "gluteo": 0.5,
+  "hombro_post": 0.5
+ },
+ "Comba": {
+  "cardio": 1,
+  "gemelos": 0.5
+ },
+ "Skaters": {
+  "cardio": 1,
+  "gluteo": 0.5,
+  "aductores": 0.5
+ },
+ "Mountain climbers": {
+  "cardio": 1,
+  "core": 0.5
+ },
+ "Flexiones con pausa abajo": {
+  "pecho": 1,
+  "triceps": 0.5,
+  "hombro_ant": 0.5,
+  "core": 0.5
+ },
+ "Sentadilla búlgara sin peso": {
+  "cuadriceps": 1,
+  "gluteo": 1,
+  "core": 0.5
+ },
+ "Zancada atrás con mancuernas": {
+  "cuadriceps": 1,
+  "gluteo": 1,
+  "antebrazo": 0.5
+ }
+}

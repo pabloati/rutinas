@@ -36,8 +36,8 @@ Este archivo resume una conversación previa con Claude (claude.ai) donde se dis
 | Archivo | Contenido |
 |---|---|
 | `index.html` | Página de inicio: enlaces a las seis rutinas y rotación semanal (Push A/B alternando). |
-| `rutina_push.html` | Push A: pecho, hombro, tríceps + cuádriceps. 3 circuitos (60 s), core + comba. |
-| `rutina_push_B.html` | Push B (octubre 2026, el usuario notó demasiado hombro y poco tríceps en la A): sin press de hombro ni elevaciones laterales. C1 press en el suelo codos pegados + sentadilla con mancuernas a los lados (8–10 kg); C2 aperturas en el suelo, extensión de tríceps tumbado, patada de tríceps (4–6 kg); C3 flexiones diamante, fondos en silla, extensión de tríceps en la silla; core: comba, plancha lateral, comba, elevación de piernas. Se alterna con la A de una semana a otra. |
+| `rutina_push.html` | Push A (reequilibrada oct 2026): C1 press suelo + sentadilla frontal (8–10 kg); C2 press hombro, elev. laterales, ext. tríceps (4–6 kg); C3 flexiones con pausa, fondos, búlgara sin peso; core: comba, elev. piernas, comba, hollow. Calentamiento con rotación externa de hombro. |
+| `rutina_push_B.html` | Push B (reequilibrada oct 2026): C1 press suelo codos pegados + zancada atrás con mancuernas (8–10 kg); C2 aperturas, elev. laterales, ext. tríceps tumbado (4–6 kg); C3 flexiones diamante, flexión pica, búlgara sin peso; core: comba, plancha lateral, comba, elev. piernas. Alterna con la A. |
 | `rutina_pull.html` | Pull: espalda, bíceps + glúteo/isquios. Circuito 1 de barra (90 s) con tabla de progresión, 2 circuitos de mancuernas (60 s), core + comba. |
 | `rutina_A.html` | Full body A: piernas + empuje. 2 circuitos (90 s de descanso), core + comba. |
 | `rutina_B.html` | Full body B: 3 circuitos (60 s), con brazos (curl, tríceps). Circuito 3 con gomas y silla. |
@@ -121,6 +121,10 @@ Repo público `pabloati/rutinas`, Pages desde la rama `main` (carpeta raíz). UR
 Si no está activado: Settings → Pages → Source "Deploy from a branch" → `main` / `/ (root)`.
 
 ## Notas técnicas
+
+- **Skill `entrenador`** (`.claude/skills/entrenador/`): principios de diseño, evidencia con fuentes (`references/evidencia.md`),
+  mapa ejercicio→músculos (`references/musculos.json`) y `scripts/auditoria.py`, que cuenta series semanales por músculo.
+  Úsala al diseñar o revisar rutinas; al añadir un ejercicio nuevo, añádelo al JSON.
 
 - Sin build ni dependencias: HTML estático.
 - Las pruebas de la conversación anterior se hicieron con `jsdom` en Node (simulando `Date.now` para acelerar los cronómetros). Mantener los IDs/clases existentes para no romper los scripts.
