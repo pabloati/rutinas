@@ -17,16 +17,14 @@ MAP.pop("_doc", None)
 MUSCLES = ["pecho", "hombro_ant", "hombro_lat", "hombro_post", "triceps", "biceps", "dorsal",
            "espalda_alta", "lumbar", "cuadriceps", "gluteo", "isquios", "gemelos", "aductores",
            "antebrazo", "core", "oblicuos", "cardio"]
-# Semanas de la rotación: nombre -> lista de archivos
-WEEKS = {
-    "Push A + Pull + Full A": ["rutina_push.html", "rutina_pull.html", "rutina_A.html"],
-    "Push A + Pull + Full B": ["rutina_push.html", "rutina_pull.html", "rutina_B.html"],
-    "Push A + Pull + Full C": ["rutina_push.html", "rutina_pull.html", "rutina_C.html"],
-    "Push B + Pull + Full A": ["rutina_push_B.html", "rutina_pull.html", "rutina_A.html"],
-    "Push B + Pull + Full B": ["rutina_push_B.html", "rutina_pull.html", "rutina_B.html"],
-    "Push B + Pull + Full C": ["rutina_push_B.html", "rutina_pull.html", "rutina_C.html"],
-    "Full A + B + C": ["rutina_A.html", "rutina_B.html", "rutina_C.html"],
-}
+# Combinaciones semanales: un Push × un Pull × una full body (y la alternativa A+B+C)
+import itertools
+PUSH = ["rutina_push.html", "rutina_push_B.html"]
+PULL = ["rutina_pull.html", "rutina_pull_B.html"]
+FULL = ["rutina_A.html", "rutina_B.html", "rutina_C.html"]
+WEEKS = {" + ".join(x.replace("rutina_", "").replace(".html", "") for x in c): list(c)
+         for c in itertools.product(PUSH, PULL, FULL)}
+WEEKS["A + B + C"] = FULL
 
 def sections(text):
     for sec in re.findall(r"<section>(.*?)</section>", text, re.S):
@@ -78,7 +76,13 @@ def main():
     for wk, fl in WEEKS.items():
         if all((root / x).exists() for x in fl):
             weeks[wk] = {m: sum(per[x][m] for x in fl) for m in MUSCLES}
-    table(weeks, list(weeks), "Series por músculo y SEMANA según la rotación (objetivo 6–12 en grupos grandes, nada en 0)")
+    print("\n### Series por músculo y SEMANA (Push × Pull × full body; objetivo 6–12 en grupos grandes, nada en 0)\n")
+    print("| músculo | mínimo | semana del mínimo | máximo | semana del máximo |")
+    print("|---|---|---|---|---|")
+    for m in MUSCLES:
+        lo = min(weeks, key=lambda w: weeks[w][m]); hi = max(weeks, key=lambda w: weeks[w][m])
+        flag = "" if m == "cardio" else ("  ⚠ 0" if weeks[lo][m] == 0 else ("  ⚠ <4" if weeks[lo][m] < 4 else ""))
+        print(f"| {m} | {weeks[lo][m]:g} | {lo} | {weeks[hi][m]:g} | {hi} |{flag}")
     if missing:
         print("\n⚠ Ejercicios sin mapear en musculos.json:", "; ".join(sorted(missing)))
 

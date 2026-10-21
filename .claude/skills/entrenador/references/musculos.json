@@ -264,5 +264,47 @@
   "cuadriceps": 1,
   "gluteo": 1,
   "antebrazo": 0.5
+ },
+ "Dominada agarre neutro: negativas": {
+  "dorsal": 1,
+  "biceps": 0.5,
+  "espalda_alta": 0.5,
+  "antebrazo": 0.5
+ },
+ "Dominada agarre ancho: asistidas": {
+  "dorsal": 1,
+  "biceps": 0.5,
+  "espalda_alta": 0.5,
+  "antebrazo": 0.5
+ },
+ "Encogimiento colgado": {
+  "espalda_alta": 1,
+  "antebrazo": 1,
+  "dorsal": 0.5
+ },
+ "Remo con codos abiertos": {
+  "espalda_alta": 1,
+  "hombro_post": 1,
+  "biceps": 0.5
+ },
+ "Curl martillo": {
+  "biceps": 1,
+  "antebrazo": 1
+ },
+ "Remo a una mano con pausa": {
+  "dorsal": 1,
+  "espalda_alta": 0.5,
+  "biceps": 0.5,
+  "hombro_post": 0.5
+ },
+ "Nadador": {
+  "lumbar": 1,
+  "hombro_post": 0.5,
+  "gluteo": 0.5
+ },
+ "Bird dog": {
+  "core": 1,
+  "lumbar": 0.5,
+  "gluteo": 0.5
  }
 }

@@ -35,10 +35,11 @@ Este archivo resume una conversación previa con Claude (claude.ai) donde se dis
 
 | Archivo | Contenido |
 |---|---|
-| `index.html` | Página de inicio: enlaces a las seis rutinas y rotación semanal (Push A/B alternando). |
+| `index.html` | Página de inicio: enlaces a las siete rutinas y rotación semanal (Push y Pull A/B alternando). |
 | `rutina_push.html` | Push A (reequilibrada oct 2026): C1 press suelo + sentadilla frontal (8–10 kg); C2 press hombro, elev. laterales, ext. tríceps (4–6 kg); C3 flexiones con pausa, fondos, búlgara sin peso; core: comba, elev. piernas, comba, hollow. Calentamiento con rotación externa de hombro. |
 | `rutina_push_B.html` | Push B (reequilibrada oct 2026): C1 press suelo codos pegados + zancada atrás con mancuernas (8–10 kg); C2 aperturas, elev. laterales, ext. tríceps tumbado (4–6 kg); C3 flexiones diamante, flexión pica, búlgara sin peso; core: comba, plancha lateral, comba, elev. piernas. Alterna con la A. |
-| `rutina_pull.html` | Pull: espalda, bíceps + glúteo/isquios. Circuito 1 de barra (90 s) con tabla de progresión, 2 circuitos de mancuernas (60 s), core + comba. |
+| `rutina_pull.html` | Pull A: espalda, bíceps + glúteo/isquios. C1 barra (90 s: ancho negativas, neutro asistidas, rodillas colgado) con tabla de progresión; C2 remo inclinado, PM rumano, curl (6–8 kg); C3 remo a una mano, pullover, puente una pierna (8–10 kg); core: comba, dead bug, comba, superman. |
+| `rutina_pull_B.html` | Pull B (oct 2026): C1 barra con agarres al revés (neutro negativas, ancho asistidas, encogimiento colgado); C2 pájaro, remo con codos abiertos, curl martillo (4–6 kg); C3 peso muerto a una pierna, remo a una mano con pausa, marcha con mancuerna (una de 8–10 kg); core: comba, nadador, comba, bird dog. Hombro posterior, espalda alta y agarre; menos glúteo. |
 | `rutina_A.html` | Full body A: piernas + empuje. 2 circuitos (90 s de descanso), core + comba. |
 | `rutina_B.html` | Full body B: 3 circuitos (60 s), con brazos (curl, tríceps). Circuito 3 con gomas y silla. |
 | `rutina_C.html` | Full body C: cardio, hombro, core de estabilidad. Sin gomas, con saltos. |
