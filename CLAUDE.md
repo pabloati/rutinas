@@ -35,16 +35,18 @@ Este archivo resume una conversación previa con Claude (claude.ai) donde se dis
 
 | Archivo | Contenido |
 |---|---|
-| `index.html` | Página de inicio: enlaces a las siete rutinas y rotación semanal (Push y Pull A/B alternando). |
+| `index.html` | Página de inicio: enlaces a las nueve rutinas y rotación semanal (Push y Pull A/B alternando). |
 | `rutina_push.html` | Push A (reequilibrada oct 2026): C1 press suelo + sentadilla frontal (8–10 kg); C2 press hombro, elev. laterales, ext. tríceps (4–6 kg); C3 flexiones con pausa, fondos, búlgara sin peso; core: comba, elev. piernas, comba, hollow. Calentamiento con rotación externa de hombro. |
 | `rutina_push_B.html` | Push B (reequilibrada oct 2026): C1 press suelo codos pegados + zancada atrás con mancuernas (8–10 kg); C2 aperturas, elev. laterales, ext. tríceps tumbado (4–6 kg); C3 flexiones diamante, flexión pica, búlgara sin peso; core: comba, plancha lateral, comba, elev. piernas. Alterna con la A. |
 | `rutina_pull.html` | Pull A: espalda, bíceps + glúteo/isquios. C1 barra (90 s: ancho negativas, neutro asistidas, rodillas colgado) con tabla de progresión; C2 remo inclinado, PM rumano, curl (6–8 kg); C3 remo a una mano, pullover, puente una pierna (8–10 kg); core: comba, dead bug, comba, superman. |
 | `rutina_pull_B.html` | Pull B (oct 2026): C1 barra con agarres al revés (neutro negativas, ancho asistidas, encogimiento colgado); C2 pájaro, remo con codos abiertos, curl martillo (4–6 kg); C3 peso muerto a una pierna, remo a una mano con pausa, marcha con mancuerna (una de 8–10 kg); core: comba, nadador, comba, bird dog. Hombro posterior, espalda alta y agarre; menos glúteo. |
-| `rutina_A.html` | Full body A: piernas + empuje. 2 circuitos (90 s de descanso), core + comba. |
-| `rutina_B.html` | Full body B: 3 circuitos (60 s), con brazos (curl, tríceps). Circuito 3 con gomas y silla. |
-| `rutina_C.html` | Full body C: cardio, hombro, core de estabilidad. Sin gomas, con saltos. |
+| `rutina_A.html` | Full body A (oct 2026): C1 goblet, flexiones, remo a una mano (una de 8–10 kg); C2 zancada lateral, press de hombro, PM rumano (dos de 4–6 kg); core: plancha lateral, comba, dead bug, comba, elevación de talones a una pierna. Calentamiento sin comba. |
+| `rutina_B.html` | Full body B (oct 2026): C1 búlgara, remo inclinado, elevaciones laterales (dos de 5–6 kg); C2 flexiones, extensión de tríceps, PM a una pierna (una de 6–8 kg); C3 sentadilla sumo, elevación de talones a una pierna, curl martillo (una de 6–8 kg). **Ya sin gomas.** |
+| `rutina_C.html` | Full body C (oct 2026): C1 swing, goblet con pausa (antes thruster), zancada lateral (una de 8–10 kg); C2 press Arnold, remo en plancha, pájaro (dos de 4–5 kg); cardio y core de estabilidad con mancuerna. |
+| `rutina_core_A.html` | Core A (oct 2026, ~20 min, extra para días libres): calentamiento 3 min; bloque 1 (40/20 × 2): comba, dead bug, comba, hollow; bloque 2 (40/20 × 2): plancha lateral, bird dog, superman. Sin mancuernas. |
+| `rutina_core_B.html` | Core B (oct 2026, ~20 min): bloque 1: comba, bicicleta, mountain climbers, elev. piernas; bloque 2 con una mancuerna de 4–6 kg: leñador, dead bug con mancuerna, marcha con mancuerna. |
 
-Rotación semanal (en `index.html`): Push – Pull – una full body rotando (semana 1 A, semana 2 B, semana 3 C). Alternativa: A-B-C.
+Rotación semanal (en `index.html`), ciclo de 6 semanas: Push y Pull alternan A/B cada semana, la full body rota A, B, C. Alternativa: A-B-C.
 
 ### Funciones ya implementadas (en los tres HTML)
 
@@ -77,10 +79,9 @@ Cada HTML es **un único archivo autocontenido** (CSS y JS inline, SVG inline). 
 
 ## Tareas pendientes (en este orden)
 
-### 1. Pregunta abierta (no tocar sin confirmar)
+### 1. Resuelto (oct 2026)
 
-- (Opcional, el usuario no lo confirmó) Rutina B circuito 3: sustituir gomas por dos mancuernas de 3–4 kg
-  (elevaciones laterales y curl martillo a 15 reps con bajada en 3 s). **Preguntar antes.**
+- Rutina B circuito 3: las gomas se sustituyeron por una mancuerna de 6–8 kg (sumo, gemelos, curl martillo). Las elevaciones laterales pasaron al circuito 1.
 
 ### 2. Diseño de PUSH y PULL (ya implementado, se deja como referencia)
 

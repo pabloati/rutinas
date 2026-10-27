@@ -306,5 +306,23 @@
   "core": 1,
   "lumbar": 0.5,
   "gluteo": 0.5
+ },
+ "Zancada lateral con mancuernas": {
+  "aductores": 1,
+  "cuadriceps": 1,
+  "gluteo": 0.5
+ },
+ "Elevación de talones a una pierna": {
+  "gemelos": 1
+ },
+ "Sentadilla sumo": {
+  "aductores": 1,
+  "gluteo": 1,
+  "cuadriceps": 0.5
+ },
+ "Sentadilla goblet con pausa": {
+  "cuadriceps": 1,
+  "gluteo": 0.5,
+  "core": 0.5
  }
 }
