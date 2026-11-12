@@ -324,5 +324,35 @@
   "cuadriceps": 1,
   "gluteo": 0.5,
   "core": 0.5
+ },
+ "Remo con goma": {
+  "dorsal": 1,
+  "espalda_alta": 0.5,
+  "hombro_post": 0.5,
+  "biceps": 0.5
+ },
+ "Jalón con goma": {
+  "dorsal": 1,
+  "espalda_alta": 0.5,
+  "biceps": 0.5
+ },
+ "Pull-apart con goma": {
+  "hombro_post": 1,
+  "espalda_alta": 1
+ },
+ "Flexiones con los pies en la cama": {
+  "pecho": 1,
+  "hombro_ant": 0.5,
+  "triceps": 0.5,
+  "core": 0.5
+ },
+ "Puente con talones en la cama": {
+  "isquios": 1,
+  "gluteo": 0.5
+ },
+ "Sentadillas rápidas": {
+  "cuadriceps": 0.5,
+  "gluteo": 0.5,
+  "cardio": 1
  }
 }

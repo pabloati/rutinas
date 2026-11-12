@@ -35,7 +35,7 @@ Este archivo resume una conversación previa con Claude (claude.ai) donde se dis
 
 | Archivo | Contenido |
 |---|---|
-| `index.html` | Página de inicio: enlaces a las nueve rutinas y rotación semanal (Push y Pull A/B alternando). |
+| `index.html` | Página de inicio: enlaces a las once rutinas (incluidas las dos de hotel) y rotación semanal (Push y Pull A/B alternando). |
 | `rutina_push.html` | Push A (reequilibrada oct 2026): C1 press suelo + sentadilla frontal (8–10 kg); C2 press hombro, elev. laterales, ext. tríceps (4–6 kg); C3 flexiones con pausa, fondos, búlgara sin peso; core: comba, elev. piernas, comba, hollow. Calentamiento con rotación externa de hombro. |
 | `rutina_push_B.html` | Push B (reequilibrada oct 2026): C1 press suelo codos pegados + zancada atrás con mancuernas (8–10 kg); C2 aperturas, elev. laterales, ext. tríceps tumbado (4–6 kg); C3 flexiones diamante, flexión pica, búlgara sin peso; core: comba, plancha lateral, comba, elev. piernas. Alterna con la A. |
 | `rutina_pull.html` | Pull A: espalda, bíceps + glúteo/isquios. C1 barra (90 s: ancho negativas, neutro asistidas, rodillas colgado) con tabla de progresión; C2 remo inclinado, PM rumano, curl (6–8 kg); C3 remo a una mano, pullover, puente una pierna (8–10 kg); core: comba, dead bug, comba, superman. |
@@ -44,6 +44,8 @@ Este archivo resume una conversación previa con Claude (claude.ai) donde se dis
 | `rutina_B.html` | Full body B (oct 2026): C1 búlgara, remo inclinado, elevaciones laterales (dos de 5–6 kg); C2 flexiones, extensión de tríceps, PM a una pierna (una de 6–8 kg); C3 sentadilla sumo, elevación de talones a una pierna, curl martillo (una de 6–8 kg). **Ya sin gomas.** |
 | `rutina_C.html` | Full body C (oct 2026): C1 swing, goblet con pausa (antes thruster), zancada lateral (una de 8–10 kg); C2 press Arnold, remo en plancha, pájaro (dos de 4–5 kg); cardio y core de estabilidad con mancuerna. |
 | `rutina_core_A.html` | Core A (oct 2026, ~20 min, extra para días libres): calentamiento 3 min; bloque 1 (40/20 × 2): comba, dead bug, comba, hollow; bloque 2 (40/20 × 2): plancha lateral, bird dog, superman. Sin mancuernas. |
+| `rutina_hotel_corta.html` | Hotel exprés (nov 2026, ~30 min, de viaje, habitación pequeña, sin saltos ni comba): C1 búlgara, flexiones con pausa, remo con goma; C2 puente a una pierna, pica, pull-apart con goma; core 40/20 × 2: mountain climbers, plancha lateral, dead bug. Cada ejercicio con goma tiene alternativa boca abajo sin goma. |
+| `rutina_hotel.html` | Hotel completa (nov 2026, ~50 min, sin material salvo goma opcional): C1 búlgara, flexiones pies en la cama, remo con goma; C2 PM a una pierna (mochila opcional), pica, jalón con goma; C3 zancada lateral, pull-apart, puente talones en la cama; core: mountain climbers, plancha lateral, sentadillas rápidas, hollow. |
 | `rutina_core_B.html` | Core B (oct 2026, ~20 min): bloque 1: comba, bicicleta, mountain climbers, elev. piernas; bloque 2 con una mancuerna de 4–6 kg: leñador, dead bug con mancuerna, marcha con mancuerna. |
 
 Rotación semanal (en `index.html`), ciclo de 6 semanas: Push y Pull alternan A/B cada semana, la full body rota A, B, C. Alternativa: A-B-C.
@@ -66,6 +68,11 @@ Cada HTML es **un único archivo autocontenido** (CSS y JS inline, SVG inline). 
 - **Contador de rondas** (`.rnd`, creado por JS tras cada `.rest` cuyo `.sub` dice "N rondas"): "Ronda r / N" con botones −/+.
   Sube solo cuando acaba el cronómetro del descanso (evento `tmdone`), topa en N ("Última ronda", borde de acento).
   Se guarda en localStorage `rutina-r:<pathname>` con marca de tiempo y caduca a las 3 h (para que la sesión siguiente empiece en 1).
+- **Resumen para compartir**: botón `#sumbtn` ("📋 Ver resumen para compartir", tras `.plan`) que abre una tarjeta a pantalla completa
+  (`.sm-ov` / `.sm-card`) generada por JS leyendo la página: h1, minutos de `.plan`, fecha de hoy, y por sección los `.ex`
+  (`.nm` + `.reps`), rondas/descanso (`.sub`, `.rest`), material/peso (`.wt` → "2 × 4–6 kg", "goma · cama"…). Calentamiento y
+  estiramientos en una línea. La letra se reduce sola hasta que la tarjeta cabe en la pantalla (para hacer captura).
+  `#resumen` en la URL lo abre directamente. ✕, Escape o tocar fuera lo cierran.
 - **Vídeos**: enlace "▶ Ver vídeo" por ejercicio = búsqueda de YouTube con el nombre en inglés + "tutorial"
   (no enlazar vídeos concretos, pueden desaparecer).
 
