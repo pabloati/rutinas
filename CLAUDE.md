@@ -74,6 +74,11 @@ Cada HTML es **un único archivo autocontenido** (CSS y JS inline, SVG inline). 
   (`.nm` + `.reps`), rondas/descanso (`.sub`, `.rest`), material/peso (`.wt` → "2 × 4–6 kg", "goma · cama"…). Calentamiento y
   estiramientos en una línea. La letra se reduce sola hasta que la tarjeta cabe en la pantalla (para hacer captura).
   `#resumen` en la URL lo abre directamente. ✕, Escape o tocar fuera lo cierran.
+  Incluye un **mapa muscular** (figura propia de frente y espalda, SVG con `data-m` por músculo; no usar imágenes de Hevy u
+  otras apps): principales (factor 1 en algún ejercicio) en acento, secundarios (solo 0,5) en acento claro. Los datos salen de
+  `<script type="application/json" id="mus">` justo después de `</main>`, que genera
+  `.claude/skills/entrenador/scripts/sincronizar_musculos.py` desde `musculos.json`: **ejecútalo tras cambiar ejercicios**
+  (la auditoría avisa si alguna página está desactualizada).
 - **Vídeos**: enlace "▶ Ver vídeo" por ejercicio = búsqueda de YouTube con el nombre en inglés + "tutorial"
   (no enlazar vídeos concretos, pueden desaparecer).
 

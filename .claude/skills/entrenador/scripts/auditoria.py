@@ -85,6 +85,11 @@ def main():
         print(f"| {m} | {weeks[lo][m]:g} | {lo} | {weeks[hi][m]:g} | {hi} |{flag}")
     if missing:
         print("\n⚠ Ejercicios sin mapear en musculos.json:", "; ".join(sorted(missing)))
+    sys.path.insert(0, str(HERE))
+    from sincronizar_musculos import expected, current
+    stale = [f.name for f in files if current(f.read_text(encoding="utf-8")) != expected(f.read_text(encoding="utf-8"))[0]]
+    if stale:
+        print("\n⚠ Mapa muscular desactualizado en:", ", ".join(stale), "→ ejecuta scripts/sincronizar_musculos.py")
 
 if __name__ == "__main__":
     main()

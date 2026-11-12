@@ -20,6 +20,8 @@ sustituyen consejo médico; nunca des planes de dieta con cifras.
 1. **Audita antes de opinar.** Ejecuta `python3 .claude/skills/entrenador/scripts/auditoria.py` desde la raíz
    del repo. Da las series semanales por músculo para cada combinación de la rotación y avisa de ejercicios
    sin mapear. Si añades un ejercicio nuevo a un HTML, añádelo también a `references/musculos.json`.
+   Después ejecuta `python3 .claude/skills/entrenador/scripts/sincronizar_musculos.py`: copia el mapa en cada HTML
+   (`<script type="application/json" id="mus">`) para la figura de músculos del resumen. La auditoría avisa si falta.
 2. **Lee `references/evidencia.md`** cuando necesites justificar una decisión (volumen, frecuencia, reps,
    descanso, grasa abdominal). Cita la fuente al usuario si lo pide o si la decisión es discutible.
 3. **Propón primero, genera después** si el usuario dice "vamos a hablar primero". Si no, haz el cambio y explica

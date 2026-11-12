@@ -107,6 +107,18 @@ main{padding-bottom:110px}
 .sm-sec p{margin:.15em 0 0;font-size:.85em;color:var(--mute)}
 .sm-ft{padding:.45em 1em;font-size:.75em;color:var(--mute);text-align:center;background:var(--bg)}
 .sm-x{position:fixed;top:10px;right:10px;width:40px;height:40px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;z-index:31}
+.sm-mus{display:flex;align-items:center;gap:.8em;padding:.55em 1em;border-bottom:1px solid var(--line)}
+.sm-body{width:9.5em;height:9.5em;flex:none}
+.sm-body .bd{fill:var(--line);opacity:.5}
+.sm-body .mz{fill:var(--line);stroke:var(--card);stroke-width:.8;stroke-linejoin:round}
+.sm-body .mz.p{fill:var(--acc)}
+.sm-body .mz.s{fill:color-mix(in srgb,var(--acc) 40%,var(--line))}
+.sm-ml{font-size:.82em;min-width:0}
+.sm-ml p{margin:0 0 .45em}
+.sm-ml p:last-child{margin:0}
+.sm-ml b{font-weight:500}
+.sm-k{display:inline-block;width:.8em;height:.8em;border-radius:.2em;margin-right:.35em;vertical-align:-.05em;background:var(--acc)}
+.sm-k.s{background:color-mix(in srgb,var(--acc) 40%,var(--line))}
 @media print{.sumbtn,.sm-ov{display:none}}
 </style>
 </head>
@@ -222,6 +234,7 @@ main{padding-bottom:110px}
 </div>
 <p><button type="button" class="reset" id="rst">Restablecer los tiempos originales</button></p>
 </main>
+<script type="application/json" id="mus">{"Press en el suelo":{"pecho":1,"triceps":0.5,"hombro_ant":0.5},"Sentadilla frontal con mancuernas":{"cuadriceps":1,"gluteo":0.5,"core":0.5},"Press de hombro de pie":{"hombro_ant":1,"hombro_lat":0.5,"triceps":0.5},"Elevaciones laterales":{"hombro_lat":1},"Extensión de tríceps tumbado":{"triceps":1},"Flexiones con pausa abajo":{"pecho":1,"triceps":0.5,"hombro_ant":0.5,"core":0.5},"Fondos en silla":{"triceps":1,"pecho":0.5,"hombro_ant":0.5},"Sentadilla búlgara sin peso":{"cuadriceps":1,"gluteo":1,"core":0.5},"Comba":{"cardio":1,"gemelos":0.5},"Elevación de piernas tumbado":{"core":1},"Hollow hold":{"core":1}}</script>
 <div class="zoom" role="group" aria-label="Tamaño del texto"><button type="button" id="zm" aria-label="Reducir tamaño">A−</button><button type="button" id="zp" aria-label="Aumentar tamaño">A+</button></div>
 <script>
 (function(){var z=1,k='rutina-zoom';try{var v=parseFloat(localStorage.getItem(k));if(v>=0.8&&v<=2)z=v}catch(e){}
@@ -355,10 +368,21 @@ function short(s){return s.split(/[:(,]/)[0].trim()}
 function gear(t){var m=/(una|dos)(?: sola)? mancuernas? de ([\d–]+) kg/.exec(t);if(m)return (m[1]==='una'?'1':'2')+' × '+m[2]+' kg';
 var k=[['barra','barra'],['comba','comba'],['goma','goma'],['cama','cama'],['silla','silla']].filter(function(p){return t.toLowerCase().indexOf(p[0])>=0}).map(function(p){return p[1]});
 return k.length?k.join(' · '):''}
+var MUS={pecho:'Pecho',hombro_ant:'Hombro delantero',hombro_lat:'Hombro lateral',hombro_post:'Hombro trasero',triceps:'Tríceps',biceps:'Bíceps',dorsal:'Dorsal',espalda_alta:'Espalda alta',lumbar:'Lumbar',cuadriceps:'Cuádriceps',gluteo:'Glúteo',isquios:'Isquios',gemelos:'Gemelos',aductores:'Aductores',antebrazo:'Antebrazo',core:'Abdomen',oblicuos:'Oblicuos'};
+var BODY='<svg class="sm-body" viewBox="0 0 200 200" role="img" aria-label="Músculos trabajados: de frente y de espaldas"><g><ellipse class="bd" cx="50" cy="12" rx="7.5" ry="9"/><polygon class="bd" points="45,19 55,19 56,27 44,27"/><polygon class="bd" points="35,92 44,91 50,95 56,91 65,92 64,100 50,108 36,100"/><polygon class="mz" data-m="hombro_ant" points="37,28 30,29 26,36 25.5,43 26.5,47.5 31.5,44 35.5,37"/><polygon class="mz" data-m="hombro_ant" points="63,28 70,29 74,36 74.5,43 73.5,47.5 68.5,44 64.5,37"/><polygon class="mz" data-m="hombro_lat" points="30,29 24.5,32.5 21.5,40 22.5,47 25.5,43 26,36"/><polygon class="mz" data-m="hombro_lat" points="70,29 75.5,32.5 78.5,40 77.5,47 74.5,43 74,36"/><polygon class="mz" data-m="pecho" points="38,29 49,31 49,48.5 42.5,51 35.5,47.5 33.5,39"/><polygon class="mz" data-m="pecho" points="62,29 51,31 51,48.5 57.5,51 64.5,47.5 66.5,39"/><polygon class="mz" data-m="biceps" points="26.5,49 32,45.5 33,52 31,64.5 25.5,69 22.5,61"/><polygon class="mz" data-m="biceps" points="73.5,49 68,45.5 67,52 69,64.5 74.5,69 77.5,61"/><polygon class="mz" data-m="antebrazo" points="21.5,70 28.5,67.5 27.5,80 22.5,98.5 15.5,98.5 16,84"/><polygon class="mz" data-m="antebrazo" points="78.5,70 71.5,67.5 72.5,80 77.5,98.5 84.5,98.5 84,84"/><polygon class="mz" data-m="core" points="43,53 57,53 58.5,73 56.5,90 50,93 43.5,90 41.5,73"/><polygon class="mz" data-m="oblicuos" points="35,50 41.5,52.5 40.5,73 42.5,90 37.5,91.5 35.5,79 33.5,62"/><polygon class="mz" data-m="oblicuos" points="65,50 58.5,52.5 59.5,73 57.5,90 62.5,91.5 64.5,79 66.5,62"/><polygon class="mz" data-m="cuadriceps" points="36.5,97 45,103 46.5,118 45.5,145 40,149 35,145 32.5,121"/><polygon class="mz" data-m="cuadriceps" points="63.5,97 55,103 53.5,118 54.5,145 60,149 65,145 67.5,121"/><polygon class="mz" data-m="aductores" points="46,103 50,106 50,123 47.5,132 47,117"/><polygon class="mz" data-m="aductores" points="54,103 50,106 50,123 52.5,132 53,117"/><ellipse class="bd" cx="40.5" cy="153" rx="5" ry="3.6"/><ellipse class="bd" cx="59.5" cy="153" rx="5" ry="3.6"/><polygon class="mz" data-m="gemelos" points="36,157 45.5,157 46,171 44,186 39,186 35.5,172"/><polygon class="mz" data-m="gemelos" points="64,157 54.5,157 54,171 56,186 61,186 64.5,172"/><polygon class="bd" points="37.5,188 45,188 46.5,196 34.5,196"/><polygon class="bd" points="62.5,188 55,188 53.5,196 65.5,196"/><ellipse class="bd" cx="17.5" cy="104" rx="3.6" ry="5.5"/><ellipse class="bd" cx="82.5" cy="104" rx="3.6" ry="5.5"/></g><g transform="translate(100,0)"><ellipse class="bd" cx="50" cy="12" rx="7.5" ry="9"/><polygon class="bd" points="45,19 55,19 56,27 44,27"/><polygon class="bd" points="35,92 44,91 50,95 56,91 65,92 64,100 50,108 36,100"/><polygon class="mz" data-m="dorsal" points="37.5,40 43,42 46.5,58 49,70 44,80 36.5,77 33.5,61 34.5,48"/><polygon class="mz" data-m="dorsal" points="62.5,40 57,42 53.5,58 51,70 56,80 63.5,77 66.5,61 65.5,48"/><polygon class="mz" data-m="lumbar" points="44,74 56,74 58,90 50,94 42,90"/><polygon class="mz" data-m="espalda_alta" points="44.5,22 55.5,22 61,28.5 66,32 58.5,40 55,58 50,64 45,58 41.5,40 34,32 39,28.5"/><polygon class="mz" data-m="hombro_post" points="36,30 30,29 26,36 25.5,43 26.5,47.5 31.5,43 37,37"/><polygon class="mz" data-m="hombro_post" points="64,30 70,29 74,36 74.5,43 73.5,47.5 68.5,43 63,37"/><polygon class="mz" data-m="hombro_lat" points="30,29 24.5,32.5 21.5,40 22.5,47 25.5,43 26,36"/><polygon class="mz" data-m="hombro_lat" points="70,29 75.5,32.5 78.5,40 77.5,47 74.5,43 74,36"/><polygon class="mz" data-m="triceps" points="26.5,48.5 32,45 33.5,52 31,65 25.5,69 22.5,60"/><polygon class="mz" data-m="triceps" points="73.5,48.5 68,45 66.5,52 69,65 74.5,69 77.5,60"/><polygon class="mz" data-m="antebrazo" points="21.5,70 28.5,67.5 27.5,80 22.5,98.5 15.5,98.5 16,84"/><polygon class="mz" data-m="antebrazo" points="78.5,70 71.5,67.5 72.5,80 77.5,98.5 84.5,98.5 84,84"/><polygon class="mz" data-m="oblicuos" points="34,80 37,78 42,89 37,92"/><polygon class="mz" data-m="oblicuos" points="66,80 63,78 58,89 63,92"/><polygon class="mz" data-m="gluteo" points="36.5,94 49,96 50,111 45,117.5 37,115.5 33.5,105"/><polygon class="mz" data-m="gluteo" points="63.5,94 51,96 50,111 55,117.5 63,115.5 66.5,105"/><polygon class="mz" data-m="isquios" points="35,118.5 45,119.5 48,126 46,147 40.5,150 35.5,146 33,128"/><polygon class="mz" data-m="isquios" points="65,118.5 55,119.5 52,126 54,147 59.5,150 64.5,146 67,128"/><ellipse class="bd" cx="40.5" cy="153" rx="5" ry="3.6"/><ellipse class="bd" cx="59.5" cy="153" rx="5" ry="3.6"/><polygon class="mz" data-m="gemelos" points="35.5,156 46,156 47,167 44.5,181 39,183.5 35,169"/><polygon class="mz" data-m="gemelos" points="64.5,156 54,156 53,167 55.5,181 61,183.5 65,169"/><polygon class="bd" points="37.5,188 45,188 46.5,196 34.5,196"/><polygon class="bd" points="62.5,188 55,188 53.5,196 65.5,196"/><ellipse class="bd" cx="17.5" cy="104" rx="3.6" ry="5.5"/><ellipse class="bd" cx="82.5" cy="104" rx="3.6" ry="5.5"/></g></svg>';
+function muscles(){var el=document.getElementById('mus'),map;if(!el)return '';try{map=JSON.parse(el.textContent)}catch(e){return ''}
+var acc={};document.querySelectorAll('main section').forEach(function(sec){var m=/(\d+)\s+(?:rondas|veces)/.exec(tx(sec.querySelector('.sub')));if(!m)return;var r=+m[1];
+sec.querySelectorAll('.ex .nm').forEach(function(n){var mm=map[tx(n)];if(!mm)return;for(var k in mm){if(!MUS[k])continue;var a=acc[k]||(acc[k]={f:0,s:0});a.f=Math.max(a.f,mm[k]);a.s+=r*mm[k]}})});
+var ks=Object.keys(acc).sort(function(a,b){return acc[b].s-acc[a].s});if(!ks.length)return '';
+var P=ks.filter(function(k){return acc[k].f>=1}),S=ks.filter(function(k){return acc[k].f<1});
+var d=document.createElement('div');d.innerHTML=BODY;d.querySelectorAll('.mz').forEach(function(e){var k=e.getAttribute('data-m');if(P.indexOf(k)>=0)e.classList.add('p');else if(S.indexOf(k)>=0)e.classList.add('s')});
+function li(a){return a.length?a.map(function(k){return MUS[k]}).join(' · '):'—'}
+return '<div class="sm-mus">'+d.innerHTML+'<div class="sm-ml"><p><i class="sm-k"></i><b>Principales</b><br>'+esc(li(P))+'</p><p><i class="sm-k s"></i><b>Secundarios</b><br>'+esc(li(S))+'</p></div></div>'}
 function build(){
 var h='',tot=0;document.querySelectorAll('.plan b').forEach(function(b){var m=/(\d+)\s*min/.exec(b.textContent);if(m)tot+=+m[1]});
 var d=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 h+='<div class="sm-hd"><h3>'+esc(tx(document.querySelector('main h1')))+'</h3><p>'+(tot?'~'+tot+' min · ':'')+esc(d)+'</p></div>';
+h+=muscles();
 document.querySelectorAll('main section').forEach(function(sec){
 var exs=sec.querySelectorAll('.ex'),simp=sec.querySelector('.simple');if(!exs.length&&!simp)return;
 var title=tx(sec.querySelector('h2')).replace(/^\d+\.\s*/,''),sub=tx(sec.querySelector('.sub')),meta=[],m;
@@ -383,7 +407,7 @@ btn.addEventListener('click',open);x.addEventListener('click',close);
 ov.addEventListener('click',function(e){if(e.target===ov)close()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('show'))close()});
 window.addEventListener('resize',fit);
-if(location.hash==='#resumen')open();
+if(location.hash==='#resumen'){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',open);else open()}
 })();
 </script>
 </body>
