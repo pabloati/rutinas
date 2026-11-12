@@ -354,5 +354,30 @@
   "cuadriceps": 0.5,
   "gluteo": 0.5,
   "cardio": 1
+ },
+ "Peso muerto rumano con goma": {
+  "isquios": 1,
+  "gluteo": 1,
+  "lumbar": 0.5
+ },
+ "Sentadilla sumo con goma": {
+  "aductores": 1,
+  "gluteo": 1,
+  "cuadriceps": 0.5
+ },
+ "Curl con goma": {
+  "biceps": 1,
+  "antebrazo": 0.5
+ },
+ "Extensión de tríceps con goma": {
+  "triceps": 1
+ },
+ "Elevaciones laterales con goma": {
+  "hombro_lat": 1
+ },
+ "Boxeo de sombra": {
+  "cardio": 1,
+  "hombro_ant": 0.5,
+  "core": 0.5
  }
 }
