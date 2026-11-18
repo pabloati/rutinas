@@ -21,10 +21,10 @@ MUSCLES = ["pecho", "hombro_ant", "hombro_lat", "hombro_post", "triceps", "bicep
 import itertools
 PUSH = ["rutina_push.html", "rutina_push_B.html"]
 PULL = ["rutina_pull.html", "rutina_pull_B.html"]
-FULL = ["rutina_A.html", "rutina_B.html", "rutina_C.html"]
+FULL = ["rutina_A.html", "rutina_B.html", "rutina_C.html", "rutina_D.html"]
 WEEKS = {" + ".join(x.replace("rutina_", "").replace(".html", "") for x in c): list(c)
          for c in itertools.product(PUSH, PULL, FULL)}
-WEEKS["A + B + C"] = FULL
+WEEKS["A + B + C"] = FULL[:3]
 
 def sections(text):
     for sec in re.findall(r"<section>(.*?)</section>", text, re.S):
