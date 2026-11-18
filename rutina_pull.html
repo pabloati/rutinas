@@ -341,7 +341,7 @@ b.click();paint()}
 function rest(sec,label){run.phase='rest';var r=run.rest={t:sec,left:sec,start:Date.now(),paused:false,label:label};
 if(sec<=0){work();return}
 try{step().b.closest('.ex,.simple div').scrollIntoView({behavior:'smooth',block:'center'})}catch(e){}
-clearInterval(run.riv);run.riv=setInterval(function(){if(!run||run.phase!=='rest'||r.paused)return;var prev=Math.ceil(r.left);r.left=r.t-(Date.now()-r.start)/1000;var c=Math.ceil(r.left);if(c!==prev&&c<=3&&c>0)window.tmBeep(660,0.12);if(r.left<=0){clearInterval(run.riv);work()}paint()},200);paint()}
+clearInterval(run.riv);run.riv=setInterval(function(){if(!run||run.phase!=='rest'||r.paused)return;var prev=Math.ceil(r.left);r.left=r.t-(Date.now()-r.start)/1000;var c=Math.ceil(r.left);if(c!==prev&&c<=3&&c>0)window.tmBeep(660,0.12);if(r.left<=0){clearInterval(run.riv);window.tmBeep(990,0.4);work()}paint()},200);paint()}
 function next(){if(!run)return;var prev=step();run.i++;if(run.i>=run.steps.length){finish();return}
 var st=step();if(st.side===2&&st.b===prev.b)rest(5,'Cambia de lado');else rest(run.restSec,run.restSec>=10?'Descanso':'Prepárate')}
 function finish(){var sec=run.sec;stopAll();window.tmRing(1);try{navigator.vibrate&&navigator.vibrate([300,100,300])}catch(e){}
