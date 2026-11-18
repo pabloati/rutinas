@@ -251,19 +251,23 @@ set(z);document.getElementById('zp').onclick=function(){set(z+0.1)};document.get
 </script>
 <script>
 (function(){
-var cur=null,ac=null,lock=null;
+var cur=null,ac=null,lock=null,want=false,hold=false,wreq=false;
 function f(n){n=Math.max(0,Math.ceil(n));return Math.floor(n/60)+':'+String(n%60).padStart(2,'0')}
-function ctx(){ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();return ac}
-function beep(freq,dur){try{var c=ctx(),o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.value=freq;o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(0.6,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+dur);o.start();o.stop(c.currentTime+dur)}catch(e){}}
-function ring(n){try{var c=ctx(),t0=c.currentTime+0.02,cp=c.createDynamicsCompressor();cp.threshold.value=-20;cp.ratio.value=10;cp.attack.value=0.001;var m=c.createGain();m.gain.value=0.95;cp.connect(m);m.connect(c.destination);
-if(!ring.nz){var L=Math.round(c.sampleRate*0.02),bf=c.createBuffer(1,L,c.sampleRate),d=bf.getChannelData(0);for(var k=0;k<L;k++)d[k]=Math.random()*2-1;ring.nz=bf}
-var A=[2093,3380,5540],B=[2349,3800,6220];
-function hit(t,fs){var e=c.createGain();e.gain.setValueAtTime(0.0001,t);e.gain.exponentialRampToValueAtTime(1,t+0.002);e.gain.exponentialRampToValueAtTime(0.0001,t+0.11);e.connect(cp);
-fs.forEach(function(f,i){var o=c.createOscillator(),g=c.createGain();o.frequency.value=f;g.gain.value=[0.6,0.3,0.18][i];o.connect(g);g.connect(e);o.start(t);o.stop(t+0.12)});
-var s=c.createBufferSource(),sg=c.createGain();s.buffer=ring.nz;sg.gain.setValueAtTime(0.5,t);sg.gain.exponentialRampToValueAtTime(0.0001,t+0.012);s.connect(sg);sg.connect(e);s.start(t);s.stop(t+0.02)}
-n=n||2;for(var r=0;r<n;r++){var st=t0+r*1.05;for(var i=0,t=st;t<st+0.8;i++,t+=0.045)hit(t,i%2?A:B)}}catch(e){}}
+function ctx(){if(!ac||ac.state==='closed'){ac=new (window.AudioContext||window.webkitAudioContext)();ring.end=0}if(ac.state!=='running'){try{var p=ac.resume();if(p&&p.catch)p.catch(function(){})}catch(e){}}return ac}
+function snd(fn){try{var c=ctx(),t=Date.now();if(c.state==='running'){fn(c);return}var p=c.resume();if(p&&p.then)p.then(function(){if(Date.now()-t<400){try{fn(c)}catch(e){}}}).catch(function(){})}catch(e){}}
+function beep(freq,dur){snd(function(c){var o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.value=freq;o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(0.6,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+dur);o.onended=function(){try{o.disconnect();g.disconnect()}catch(e){}};o.start();o.stop(c.currentTime+dur)})}
+function bell(c){var sr=c.sampleRate;if(bell.b&&bell.r===sr)return bell.b;
+var N=Math.round(sr*0.95),bf=c.createBuffer(1,N,sr),d=bf.getChannelData(0),A=[2093,3380,5540],B=[2349,3800,6220],G=[0.6,0.3,0.18],hl=Math.round(sr*0.12),i=0,t,k,j,q,fs,x,e,v;
+for(t=0;t<0.8;i++,t+=0.045){fs=i%2?A:B;k=Math.round(t*sr);for(j=0;j<hl&&k+j<N;j++){x=j/sr;e=x<0.002?x/0.002:Math.exp(-(x-0.002)*85);v=0;for(q=0;q<3;q++)v+=G[q]*Math.sin(6.2832*fs[q]*x);if(x<0.012)v+=0.5*Math.exp(-x*710)*(Math.random()*2-1);d[k+j]+=v*e}}
+for(j=0;j<N;j++){v=Math.exp(1.8*d[j]);d[j]=0.9*(v-1/v)/(v+1/v)}
+bell.b=bf;bell.r=sr;return bf}
+function ring(n){n=n||2;snd(function(c){var b=bell(c),t0=Math.max(c.currentTime+0.02,ring.end||0);if(t0-c.currentTime>4)return;
+for(var r=0;r<n;r++)(function(s,t){s.buffer=b;s.connect(c.destination);s.onended=function(){try{s.disconnect()}catch(e){}};s.start(t)})(c.createBufferSource(),t0+r*1.05);
+ring.end=t0+n*1.05})}
 function vib(p){try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}}
-function wake(on){try{if(on&&navigator.wakeLock&&!lock){navigator.wakeLock.request('screen').then(function(l){lock=l}).catch(function(){})}else if(!on&&lock){lock.release();lock=null}}catch(e){}}
+function wake(on){want=!!on||hold;try{if(want){if(!lock&&!wreq&&navigator.wakeLock&&document.visibilityState==='visible'){wreq=true;navigator.wakeLock.request('screen').then(function(l){wreq=false;lock=l;l.addEventListener('release',function(){if(lock===l)lock=null});if(!want)l.release()}).catch(function(){wreq=false})}}else if(lock){var l=lock;lock=null;l.release()}}catch(e){}}
+window.tmHold=function(on){hold=!!on;wake(!!cur)};
+document.addEventListener('visibilitychange',function(){if(document.visibilityState!=='visible')return;if(want)wake(true);if(ac&&ac.state!=='running'){try{var p=ac.resume();if(p&&p.catch)p.catch(function(){})}catch(e){}}});
 function draw(b){var st=b._s;if(st.state==='done'){b.textContent='✓ Hecho';b.style.setProperty('--p','0%');return}
 var lbl=f(st.left);if(st.split&&st.state!=='idle')lbl+=(st.left>st.t-st.split?' · lado 1':' · lado 2');
 b.textContent=(st.state==='run'?'❚❚ ':'▶ ')+lbl;b.style.setProperty('--p',(100*(1-st.left/st.t))+'%');
@@ -329,19 +333,19 @@ try{step().b.closest('.ex,.simple div').scrollIntoView({behavior:'smooth',block:
 clearInterval(run.riv);run.riv=setInterval(function(){if(!run||run.phase!=='rest'||r.paused)return;var prev=Math.ceil(r.left);r.left=r.t-(Date.now()-r.start)/1000;var c=Math.ceil(r.left);if(c!==prev&&c<=3&&c>0)window.tmBeep(660,0.12);if(r.left<=0){clearInterval(run.riv);work()}paint()},200);paint()}
 function next(){if(!run)return;var prev=step();run.i++;if(run.i>=run.steps.length){finish();return}
 var st=step();if(st.side===2&&st.b===prev.b)rest(5,'Cambia de lado');else rest(run.restSec,run.restSec>=10?'Descanso':'Prepárate')}
-function finish(){var sec=run.sec;stopAll();window.tmRing(3);try{navigator.vibrate&&navigator.vibrate([300,100,300])}catch(e){}
+function finish(){var sec=run.sec;stopAll();window.tmRing(1);try{navigator.vibrate&&navigator.vibrate([300,100,300])}catch(e){}
 var bt=sec.querySelector('.blk');bt.textContent='✓ Bloque terminado';setTimeout(function(){bt.textContent='▶ Bloque seguido'},4000)}
 function pause(){if(run.phase==='work'){step().b.click()}else{var r=run.rest;if(r.paused){r.start=Date.now()-(r.t-r.left)*1000;r.paused=false}else r.paused=true}paint()}
 function skip(){if(run.phase==='work'){var b=step().b;if(b._s.state==='run')b.click();b._s.state='idle';b._s.left=b._s.t;b.classList.remove('done');window.tmDraw(b);next()}else{clearInterval(run.riv);work()}}
 function stopAll(){if(!run)return;clearInterval(run.riv);clearInterval(run.piv);var cs=run.steps[run.i];if(cs&&run.phase==='work'&&cs.b._s.state==='run')cs.b.click();
-var bt=run.sec.querySelector('.blk');bt.classList.remove('on');bt.textContent='▶ Bloque seguido';run=null;bar.classList.remove('show')}
-document.addEventListener('tmdone',function(e){if(run&&run.phase==='work'&&e.target===step().b)setTimeout(next,600)});
+var bt=run.sec.querySelector('.blk');bt.classList.remove('on');bt.textContent='▶ Bloque seguido';run=null;bar.classList.remove('show');window.tmHold&&window.tmHold(false)}
+document.addEventListener('tmdone',function(e){if(run&&run.phase==='work'&&e.target===step().b){var r0=run,i0=run.i;setTimeout(function(){if(run===r0&&run.i===i0&&run.phase==='work')next()},600)}});
 document.querySelectorAll('section').forEach(function(sec){var tms=[].slice.call(sec.querySelectorAll('.tm'));if(tms.length<2)return;
 var sub=sec.querySelector('.sub'),txt=sub?sub.textContent:'',m=txt.match(/(\d+)(?:–\d+)? veces/),rounds=m?+m[1]:1,rm=txt.match(/(\d+) s de descanso/),restSec=rm?+rm[1]:5;
 var bt=document.createElement('button');bt.type='button';bt.className='blk';bt.textContent='▶ Bloque seguido';(sub||sec.firstElementChild).after(bt);
 bt.addEventListener('click',function(){if(run&&run.sec===sec){stopAll();return}stopAll();
 var steps=[];for(var r=1;r<=rounds;r++)tms.forEach(function(b){if(perSide(b)){steps.push({b:b,round:r,side:1});steps.push({b:b,round:r,side:2})}else steps.push({b:b,round:r,side:0})});
-run={sec:sec,steps:steps,i:0,rounds:rounds,restSec:restSec,phase:'work'};bt.classList.add('on');bt.textContent='■ Parar bloque';bar.classList.add('show');
+run={sec:sec,steps:steps,i:0,rounds:rounds,restSec:restSec,phase:'work'};bt.classList.add('on');bt.textContent='■ Parar bloque';bar.classList.add('show');window.tmHold&&window.tmHold(true);
 run.piv=setInterval(paint,250);work()})});
 })();
 </script>

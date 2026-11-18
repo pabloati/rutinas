@@ -62,6 +62,10 @@ Cada HTML es **un único archivo autocontenido** (CSS y JS inline, SVG inline). 
 - **Cronómetros** `button.tm[data-t]` en todo lo que va por tiempo (también los descansos `.rest`).
   `data-split` = aviso a mitad para cambiar de lado. Pitidos en los 3 últimos segundos, vibración, wake lock.
   Emite el evento `tmdone`. Expone `window.tmDraw` y `window.tmBeep`.
+  Sonido (nov 2026): el timbre final es **un buffer precalculado** (`bell()`), una sola fuente por redoble; `ring(n)` encola
+  detrás del timbre que esté sonando (`ring.end`), nunca encima. Los sonidos pasan por `snd()`, que no programa nada si el
+  audio está suspendido (evita la avalancha al volver). `window.tmHold(true/false)` mantiene el wake lock durante todo un
+  bloque seguido (también en los descansos) y se vuelve a pedir al volver a la pestaña. No volver a crear osciladores/compresor por timbre.
 - **Tiempos editables**: botones −/+ (5 s; 10 s si hay split) que actualizan también el texto de la etiqueta.
   Guardado en localStorage con clave `rutina-t:<pathname>:<índice>`. Botón "Restablecer los tiempos originales".
 - **Modo continuo**: botón "▶ Bloque seguido" en cada sección con 2+ cronómetros. Encadena ejercicios, descansos
