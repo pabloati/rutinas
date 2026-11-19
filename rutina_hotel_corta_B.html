@@ -61,6 +61,8 @@ main{zoom:var(--z,1)}
 .adj{font:500 18px "Barlow",system-ui,sans-serif;width:34px;height:34px;border-radius:17px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;line-height:1;padding:0}
 .adj:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .simple .tw,.rest .tw{margin:0}
+.ex>div{display:flex;flex-direction:column;align-items:flex-start;min-width:0}.ex .tw{order:1;margin-top:8px}.ex .vid{order:2}
+@media (max-width:700px){.simple div{flex-wrap:wrap;row-gap:6px}.simple div span:first-child{flex:1 0 100%}}
 .reset{font:500 14px "Barlow",system-ui,sans-serif;background:none;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:6px 12px;cursor:pointer;margin-top:4px}
 @media print{.adj,.reset{display:none}}
 .vid{display:inline-block;font-size:14px;font-weight:500;color:var(--acc);text-decoration:none;margin-top:6px}
